@@ -55,7 +55,8 @@ Access the running php container's command line as described in the previous sec
 symfony. This will ensure that symfony is installed in the container's php version.  Once the installation is complete 
 you can also install any other packages your project will require using `composer`.
 
-You can follow the official Symfony [Documentation](https://symfony.com/doc/current/index.html).
+You can follow the official Symfony [Documentation](https://symfony.com/doc/current/index.html) to install the symfony
+base solution that suits your needs.
 
 __Warning:__ the symfony installer will create a new git environment inside the `symfony` directory.  Be sure to remove
 the `.git` directory from inside the `symfony` directory.
