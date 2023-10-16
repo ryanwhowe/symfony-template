@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-buster
+FROM php:8.2-fpm-bookworm
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -8,18 +8,13 @@ RUN apt-get update \
     libxml2-dev \
     libzip-dev \
     default-mysql-client \
-    smbclient libsmbclient-dev \
-    libmagickwand-dev \
   && docker-php-ext-install \
     zip \
     intl \
     mysqli \
     pdo pdo_mysql \
     opcache \
-    sockets \
     pcntl
-
-RUN yes | pecl install smbclient && docker-php-ext-enable smbclient && yes | pecl install imagick && docker-php-ext-enable imagick
 
 RUN yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
@@ -31,7 +26,7 @@ RUN pecl install apcu && docker-php-ext-enable apcu \
     && echo "apc.enable_cli=1" >> /usr/local/etc/php/php.ini \
     && echo "apc.enable=1" >> /usr/local/etc/php/php.ini
 
-RUN curl -sS https://get.symfony.com/cli/installer | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+RUN curl -sS https://get.symfony.com/cli/installer | bash && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 ENV COMPOSER_MEMORY_LIMIT=-1

@@ -2,7 +2,7 @@
 This is a template for a docker based development of a symfony based application with nginx.
 
 ___Uses:___ 
-* php 8.0
+* php 8.2
 * nginx 1.9.15
 
 ## Templates
