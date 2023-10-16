@@ -3,7 +3,7 @@ This is a template for a docker based development of a symfony based application
 
 ___Uses:___ 
 * php 8.2
-* nginx 1.9.15
+* nginx 1.25
 
 ## Templates
 There are two issue templates for GitHub included in the repo.  These can prompt the reporters to generate good issues.
