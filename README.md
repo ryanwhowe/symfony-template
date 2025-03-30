@@ -2,7 +2,7 @@
 This is a template for a docker based development of a symfony based application with nginx.
 
 ___Uses:___ 
-* php 8.2
+* php 8.4
 * nginx 1.25
 
 ## Templates
@@ -19,15 +19,15 @@ solved with prompts for additional information
 
 ## Setup docker environment
 Assuming that you have already installed docker on your local machine.  You will need the full path to the solution
-folder.  Once the solution is cloned you will need to copy the `devops/dev/docker-compose.override.yml.example` to
-`devops/dev/docker-compose.override.yml`.  Every place that that has `<path to solution>` will need to be replaced with
+folder.  Once the solution is cloned you will need to copy the `devops/dev/compose.override.yaml.example` to
+`devops/dev/compose.override.yaml`.  Every place that that has `<path to solution>` will need to be replaced with
 the fully qualified path to the base folder of the solution, should be a folder path ending in the name of your repository unless you cloned
 the repo to a custom folder name.  The project `.gitignore` will not allow this file to be committed to the repo as it is
 dependent on the local environment
 
 From the project root
 ```shell
-cp devops/dev/docker-compose.override.yml.example devops/dev/docker-compose.override.yml
+cp devops/dev/compose.override.yaml.example devops/dev/compose.override.yaml
 ```
 
 ### Run the docker solution
@@ -38,13 +38,13 @@ time.
 From the project root directory
 ```shell
 cd devops/dev
-docker-compose up -d
+docker compose up -d
 ```
 
 ### command line access to php container
 From the `devops/dev` directory
 ```shell
-docker-compose exec php bash
+docker compose exec php bash
 ```
 
 ## Installing Symfony
@@ -67,7 +67,7 @@ Navigate you web browser to http://localhost:8081 to view the solution.
 
 If you are creating a cli application that does not utilize a web interface you can remove the `images/nginx` directory, 
 `nginx.Dockerfile` and `/logs` directory from the solution along with the accompanying settings in the 
-`docker-compose.yml`, `docker-compose.override.yml.example` and your `docker-compose.override.yml` files.
+`compose.yaml`, `compose.override.yaml.example` and your `compose.override.yaml` files.
 
 ## logs
 The nginx server will log to the solutions `/logs/nginx` directory
