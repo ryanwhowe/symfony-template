@@ -1,1 +1,1 @@
-FROM nginx:1.25-bookworm
+FROM nginx:1.29-trixie

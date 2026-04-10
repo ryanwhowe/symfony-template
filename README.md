@@ -2,8 +2,8 @@
 This is a template for a docker based development of a symfony based application with nginx.
 
 ___Uses:___ 
-* php 8.4
-* nginx 1.25
+* php 8.5
+* nginx 1.29
 
 ## Templates
 There are two issue templates for GitHub included in the repo.  These can prompt the reporters to generate good issues.
