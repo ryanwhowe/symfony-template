@@ -8,8 +8,8 @@ RUN apt-get update \
     libicu-dev \
     libxml2-dev \
     libzip-dev \
-    default-mysql-client
-RUN docker-php-ext-install \
+    default-mysql-client \
+&& RUN docker-php-ext-install \
     zip \
     intl \
     mysqli \
