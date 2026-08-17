@@ -1,7 +1,8 @@
 FROM php:8.5-fpm-trixie
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+RUN apt update \
+  && apt -y upgrade \
+  && apt install -y --no-install-recommends \
     git \
     unzip \
     zlib1g-dev \
@@ -9,7 +10,7 @@ RUN apt-get update \
     libxml2-dev \
     libzip-dev \
     default-mysql-client \
-&& RUN docker-php-ext-install \
+&& docker-php-ext-install \
     zip \
     intl \
     mysqli \
