@@ -1,1 +1,1 @@
-FROM nginx:1.29-trixie
+FROM nginx:1.30-trixie
