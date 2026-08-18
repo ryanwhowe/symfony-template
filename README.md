@@ -48,18 +48,43 @@ docker compose exec php bash
 ```
 
 ## Installing Symfony
-The symfony directory is empty.  The included `php.Dockerfile` is build off the official php8.0:fpm-buster image.  The
-resulting image contains both composer and the symfony cli installer already installed in the image.
+The `symfony` directory is empty. The included `php.Dockerfile` is built from the official PHP 8.5 FPM image. The
+resulting image contains both Composer and the Symfony CLI already installed.
 
-Access the running php container's command line as described in the previous section to perform the installation of 
-symfony. This will ensure that symfony is installed in the container's php version.  Once the installation is complete 
-you can also install any other packages your project will require using `composer`.
+Install the application from inside the running PHP container so that it uses the PHP version and tools provided by the
+container. From the `devops/dev` directory, open a shell in the container:
 
-You can follow the official Symfony [Documentation](https://symfony.com/doc/current/index.html) to install the symfony
-base solution that suits your needs.
+```shell
+docker compose exec php bash
+```
 
-__Warning:__ the symfony installer will create a new git environment inside the `symfony` directory.  Be sure to remove
-the `.git` directory from inside the `symfony` directory.
+Then, from inside the container, create a full Symfony web application:
+
+```shell
+cd /var/www/symfony
+symfony new . --webapp --no-git
+```
+
+The `--webapp` option installs the standard web application dependencies. The `--no-git` option prevents Symfony from
+creating a nested Git repository inside the existing project repository. For an API-only application, use
+`symfony new . --api --no-git` instead. To select a specific Symfony version, add a version such as
+`--version="lts"` or `--version="stable"` to the command.
+
+After installation, verify the application from inside the container:
+
+```shell
+php bin/console about
+exit
+```
+
+You can install additional packages from the same container with `composer require`. For example:
+
+```shell
+docker compose exec php composer require symfony/orm-pack
+```
+
+For additional project types, Symfony version selectors, the demo application, Composer-based installation, and
+technical requirements, see the official Symfony [documentation for creating Symfony applications](https://symfony.com/doc/current/setup.html#creating-symfony-applications).
 
 ## Accessing the solution via http
 The included `nginx.Dockerfile` will make the symfony solution available from your local environment on port 8081.
