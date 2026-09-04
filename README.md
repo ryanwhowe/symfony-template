@@ -47,6 +47,15 @@ From the `devops/dev` directory
 docker compose exec php bash
 ```
 
+### Xdebug
+Xdebug connects to the host IDE on port 9003 through `host.docker.internal`. Debugging starts
+only when an Xdebug trigger is present, such as the `XDEBUG_TRIGGER` environment variable or the browser extension for
+your IDE. For example, to debug a console command from the `devops/dev` directory:
+
+```shell
+docker compose exec -e XDEBUG_TRIGGER=1 php php bin/console about
+```
+
 ## Installing Symfony
 The `symfony` directory is empty. The included `php.Dockerfile` is built from the official PHP 8.5 FPM image. The
 resulting image contains both Composer and the Symfony CLI already installed.

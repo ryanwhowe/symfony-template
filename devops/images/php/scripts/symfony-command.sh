@@ -37,4 +37,4 @@
 # Start php Symfony Cli process #
 #################################
 echo "Symfony Console Starting: ${SYMFONY_COMMAND}"
-php bin/console ${SYMFONY_COMMAND}
+exec php bin/console ${SYMFONY_COMMAND}
